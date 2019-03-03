@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+</head>
+<body>
+    <h1>Home</h1>
+    <a href="/submit"><p>Submit Review</p></a>
+    <h2>Gyms</h2>
+    <!-- For each gym have a link that is its name, make that link take us to home/{that gyms id} -->
+    <!-- We use a enhanced for loop so that for each thing {gym} inside the given collection {gyms} will iterate through -->
+    <!-- @ symbol is used on any href that is a dynamic url -- this takes us to / -->
+
+    <!-- for each gym in the collection of gyms, will build a link for that specific gym ID -->
+    <ul th:each="gym : ${gyms}"> 
+        <a th:href="@{|/${gym.id}|}" >
+            <li th:text="${gym.name}"></li>
+        </a>
+    </ul>
+</body>
+</html>

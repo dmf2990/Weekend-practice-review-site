@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Review</title>
+</head>
+<body>
+    <!-- lists gym name on line 11, then finding gym.reviews lists review for that gym-->
+    <h1 th:text="${gym.name}"></h1>
+    <h2 th:text="${gym.address}"></h2>
+    <ul th:each="review : ${gym.reviews}">
+        <li th:text="${review.review}">review</li>
+    </ul> 
+</body>
+</html>
