@@ -1,11 +1,14 @@
 package org.dmf.weekendprojectreviewsite.models;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
 
 //entity - tags this as part of model
 @Entity 
@@ -21,12 +24,16 @@ public class Gym {
 	@OneToMany (mappedBy = "gym")
 	private Collection<Review> reviews;
 	
+	@ManyToMany
+	private Collection<Activity> activities;
+	
 	//JPA hook
 	public Gym () {}
 	
-	public Gym(String name, String address) {
+	public Gym(String name, String address, Activity ...activities) {
 		this.name = name;
 		this.address = address;
+		this.activities = Arrays.asList(activities);
 	}
 	
 	//getters
@@ -44,6 +51,10 @@ public class Gym {
 
 	public Collection<Review> getReviews() {
 		return reviews;
+	}
+	
+	public void addActivityToActivities(Activity activity) {
+		activities.add(activity);
 	}
 
 	@Override
